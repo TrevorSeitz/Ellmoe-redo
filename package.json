@@ -8,8 +8,15 @@
   },
   "dependencies": {
     "expo": "^32.0.0",
+    "expokit": "^32.1.1",
+    "firebase": "^5.11.0",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    "react-navigation": "^3.9.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-elements": "^1.1.0",
+    "react-native-firebase": "^5.3.1",
+    "react-native-maps": "^0.24.2",
+    "react-native-paper": "^2.15.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
