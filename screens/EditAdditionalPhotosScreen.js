@@ -1,23 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
   View,
+  CameraRoll,
   FlatList,
   Dimensions,
   AsyncStorage,
   ActivityIndicator,
   Image
 } from "react-native";
+import { FileSystem } from "expo";
+// import shorthash from "shorthash";
 import { Button } from "react-native-elements";
 import ImageTile from "./ImageTile";
 import AdditionalPhotosTile from "./AdditionalPhotosTile";
 import * as firebase from "firebase";
 import AdditionalImageBrowser from "./AdditionalImageBrowser";
+import SaveMainPhoto from "../components/SaveMainPhoto";
+// import CacheImage from "../components/CacheImage";
 
 const { width } = Dimensions.get("window");
 
-export default class EditAdditionalPhotosScreen extends React.Component {
+export default class EditAdditionalPhotosScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -60,6 +65,7 @@ export default class EditAdditionalPhotosScreen extends React.Component {
     this.setState({ selected: newSelected });
     // create array of indexes to be deleted
     let toDelete = Object.keys(newSelected);
+    console.log("EditAdditionalPhotosScreen");
 
     this.setState({ toDelete });
   };
@@ -78,9 +84,9 @@ export default class EditAdditionalPhotosScreen extends React.Component {
     this.deleteFromDB();
 
     const photos = this.state.photosLocations;
-    for (let location of photos) {
-      this.cacheImage(location);
-    }
+    // for (let location of photos) {
+    //   this.cacheImage(location);
+    // }
 
     this.setState({ selected: {} });
   };
@@ -123,15 +129,17 @@ export default class EditAdditionalPhotosScreen extends React.Component {
       })
       .then(() => {
         const photos = this.state.photosLocations;
-        for (let location of photos) {
-          this.cacheImage(location);
-        }
+        // for (let location of photos) {
+        //   this.cacheImage(location);
+        // }
       });
     this.forceUpdate();
   };
 
   cacheImage = async uri => {
-    const name = shorthash.unique(uri);
+    console.log("inside cacheImage");
+    // const name = shorthash.unique(uri);
+    const name = uri;
     const path = `${FileSystem.cacheDirectory}${name}`;
     const image = await FileSystem.getInfoAsync(path);
 
@@ -170,8 +178,7 @@ export default class EditAdditionalPhotosScreen extends React.Component {
   }
 
   renderImageTile = ({ item, index }) => {
-    let selected = this.state.newSelected[index] ? true : false;
-
+    let selected = this.state.selected[index] ? true : false;
     return (
       <AdditionalPhotosTile
         item={item}
@@ -239,7 +246,6 @@ export default class EditAdditionalPhotosScreen extends React.Component {
       );
     }
     const selectedPhotos = Object.keys(this.state.selected);
-    console.log("selectedPhotos", selectedPhotos);
     return (
       <View style={styles.container}>
         {this.renderImages()}

@@ -14,7 +14,6 @@ import { TextInput } from "react-native-paper";
 import { Button } from "react-native-elements";
 import * as firebase from "firebase";
 import firestore from "firebase/firestore";
-// import { FileSystem } from "expo";
 import { Font, ImagePicker, Permissions, Location, MediaLibrary } from "expo";
 import ImageBrowser from "./ImageBrowser";
 import SaveMainPhoto from "../components/SaveMainPhoto";
@@ -83,7 +82,7 @@ export default class AddLocationScreen extends React.Component {
     const result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
-      // aspect: 1,
+      aspect: 1,
       quality: 0.5,
       exif: true
     }).then(await this._getLocationAsync());
@@ -172,19 +171,21 @@ export default class AddLocationScreen extends React.Component {
 
   saveImages = async () => {
     this.setState({
-      isLoading: true
+      isLoading: true //Start activity animation
     });
     let allLocalPhotos = [...this.state.photos];
+    console.log(allLocalPhotos);
     // add the main photo to the array of extra photos
     allLocalPhotos.push(this.state.image.uri);
+    console.log(allLocalPhotos);
 
     // use for loop to send each phot to storage in order
     for (let i = 0; i < allLocalPhotos.length; i++) {
       if (allLocalPhotos[i].file) {
-        // console.log("in the loop for extra photos: ", i);
+        console.log("in the loop for extra photos: ", i);
         await this.uploadExtraImage(allLocalPhotos[i]);
       } else {
-        // console.log("in the loop for MAIN photos: ", i);
+        console.log("in the loop for MAIN photos: ", i);
         this.uploadMainImage(allLocalPhotos[i]);
       }
     }
@@ -220,7 +221,6 @@ export default class AddLocationScreen extends React.Component {
     const blob = await this.uriToBlob(uri);
     const fileName = this.state.imageFileName;
     const location = this.state.imageFileLocation;
-    // const cache = FileSystem.cacheDirectory + fileName;
     var ref = firebase
       .storage()
       .ref()
@@ -229,13 +229,6 @@ export default class AddLocationScreen extends React.Component {
     const imageFileLocation = await snapshot.ref
       .getDownloadURL()
       .then(result => this.setState({ imageFileLocation: result }))
-      // .then(result => {
-      //   FileSystem.downloadAsync(
-      //     this.state.imageFileLocation,
-      //     // result,
-      //     cache
-      //   );
-      // })
       .then(() => this.saveLocation())
       .then(() => {
         this.setState({

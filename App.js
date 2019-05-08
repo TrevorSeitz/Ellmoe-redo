@@ -3,7 +3,8 @@ import { createAppContainer } from "react-navigation";
 import ApiKeys from "./constants/ApiKeys";
 import * as firebase from "firebase";
 import { View, Text, StyleSheet, Button } from "react-native";
-
+import { Constants } from "expo";
+// Navigators
 import LoginSwitchNavigator from "./navigation/switches/LoginSwitchNavigator";
 import AppSwitchNavigator from "./navigation/switches/AppSwitchNavigator";
 
