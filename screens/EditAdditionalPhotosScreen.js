@@ -11,14 +11,12 @@ import {
   Image
 } from "react-native";
 import { FileSystem } from "expo";
-// import shorthash from "shorthash";
 import { Button } from "react-native-elements";
 import ImageTile from "./ImageTile";
 import AdditionalPhotosTile from "./AdditionalPhotosTile";
 import * as firebase from "firebase";
 import AdditionalImageBrowser from "./AdditionalImageBrowser";
 import SaveMainPhoto from "../components/SaveMainPhoto";
-// import CacheImage from "../components/CacheImage";
 
 const { width } = Dimensions.get("window");
 
@@ -53,6 +51,36 @@ export default class EditAdditionalPhotosScreen extends Component {
     this.getPhotos();
   };
 
+  getPhotos = () => {
+    const { navigation } = this.props;
+    const id = this.state.key.replace(/"/g, "");
+    firebase
+      .firestore()
+      .collection("locations")
+      .doc(id)
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          const location = doc.data();
+          this.setState({
+            name: location.name,
+            venue: location.venue,
+            photosLocations: navigation.getParam("photosLocations")
+          });
+        } else {
+          console.log("No such document!");
+        }
+      });
+    // .then(() => {
+    //   const photos = this.state.photosLocations;
+    //   console.log(photos);
+    // for (let location of photos) {
+    //   this.cacheImage(location);
+    // }
+    // });
+    this.forceUpdate();
+  };
+
   selectImage = index => {
     let newSelected = { ...this.state.selected };
     if (newSelected[index]) {
@@ -65,7 +93,7 @@ export default class EditAdditionalPhotosScreen extends Component {
     this.setState({ selected: newSelected });
     // create array of indexes to be deleted
     let toDelete = Object.keys(newSelected);
-    console.log("EditAdditionalPhotosScreen");
+    console.log("selectImage: need to creat a highlight for the hoto");
 
     this.setState({ toDelete });
   };
@@ -107,35 +135,6 @@ export default class EditAdditionalPhotosScreen extends Component {
       });
   };
 
-  getPhotos = () => {
-    const { navigation } = this.props;
-    const id = this.state.key.replace(/"/g, "");
-    firebase
-      .firestore()
-      .collection("locations")
-      .doc(id)
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          const location = doc.data();
-          this.setState({
-            name: location.name,
-            venue: location.venue,
-            photosLocations: navigation.getParam("photosLocations")
-          });
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .then(() => {
-        const photos = this.state.photosLocations;
-        // for (let location of photos) {
-        //   this.cacheImage(location);
-        // }
-      });
-    this.forceUpdate();
-  };
-
   cacheImage = async uri => {
     console.log("inside cacheImage");
     // const name = shorthash.unique(uri);
@@ -162,6 +161,7 @@ export default class EditAdditionalPhotosScreen extends Component {
 
   prepareCallback() {
     let { selected, photos } = this.state;
+    console.log("prepareCallback selected: ", selected);
     let selectedPhotos = photos.filter((item, index) => {
       return selected[index];
     });
@@ -207,8 +207,8 @@ export default class EditAdditionalPhotosScreen extends Component {
   };
 
   renderImages() {
-    const length = this.state.cachedPhotos.length
-      ? this.state.cachedPhotos.length
+    const length = this.state.photosLocations.length
+      ? this.state.photosLocations.length
       : 0;
     return (
       <View>
