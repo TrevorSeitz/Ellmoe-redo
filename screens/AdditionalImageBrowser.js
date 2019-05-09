@@ -45,37 +45,6 @@ export default class AdditionalImageBrowser extends React.Component {
     this.getPhotos();
   }
 
-  getExtraPhotoList = () => {
-    // retreive the Location information from the DB
-    const { navigation } = this.props;
-    const id = this.state.key
-      .replace(/"/g, "")
-      .firestore()
-      .collection("locations")
-      .doc(id)
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.setState({
-            location: doc.data(),
-            isLoading: false
-          });
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .then(() => {
-        this.setState({
-          photosLocations: navigation.getParam("photosLocations")
-        });
-      })
-      .then(() => {
-        // Calculate the number of additional photos that can be chosen
-        const currentMax = 4 - this.state.photosLocations.length;
-        this.setState({ max: currentMax });
-      });
-  };
-
   _retrieveData = async () => {
     try {
       const key = await AsyncStorage.getItem("key");
@@ -84,6 +53,47 @@ export default class AdditionalImageBrowser extends React.Component {
       }
     } catch (error) {}
     this.getExtraPhotoList();
+  };
+
+  // Get photos from device camera roll
+  getPhotos = () => {
+    let params = { first: 50, mimeTypes: ["image/jpeg"], groupTypes: "All" };
+    if (this.state.after) params.after = this.state.after;
+    if (!this.state.has_next_page) return;
+    CameraRoll.getPhotos(params).then(r => this.processPhotos(r));
+  };
+
+  getExtraPhotoList = () => {
+    // retreive the Location information from the DB
+    const { navigation } = this.props;
+    // const id = this.state.key
+    //   .replace(/"/g, "")
+    //   .firestore()
+    //   .collection("locations")
+    //   .doc(id)
+    //   .get()
+    //   .then(doc => {
+    //     if (doc.exists) {
+    //       this.setState({
+    //         location: doc.data(),
+    //         isLoading: false
+    //       });
+    //     } else {
+    //       console.log("No such document!");
+    //     }
+    //   })
+    //   .then(() => {
+    this.setState({
+      photosLocations: navigation.getParam("photosLocations")
+    });
+
+    this.setState({ max: 4 - this.state.photosLocations.length });
+    // })
+    // .then(() => {
+    //   // Calculate the number of additional photos that can be chosen
+    //   const currentMax = 4 - this.state.photosLocations.length;
+    //   this.setState({ max: currentMax });
+    // });
   };
 
   selectImage = index => {
@@ -205,14 +215,6 @@ export default class AdditionalImageBrowser extends React.Component {
         photosLocations: this.state.photosLocations
       });
     });
-  };
-
-  // Get photos from device camera roll
-  getPhotos = () => {
-    let params = { first: 50, mimeTypes: ["image/jpeg"], groupTypes: "All" };
-    if (this.state.after) params.after = this.state.after;
-    if (!this.state.has_next_page) return;
-    CameraRoll.getPhotos(params).then(r => this.processPhotos(r));
   };
 
   // Process photos for display
