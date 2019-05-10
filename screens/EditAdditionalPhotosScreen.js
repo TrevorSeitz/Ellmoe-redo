@@ -93,7 +93,9 @@ export default class EditAdditionalPhotosScreen extends Component {
     this.setState({ selected: newSelected });
     // create array of indexes to be deleted
     let toDelete = Object.keys(newSelected);
-    console.log("selectImage: need to creat a highlight for the hoto");
+    console.log(
+      "selectImage: need to create a highlight for the selected photos"
+    );
 
     this.setState({ toDelete });
   };
