@@ -21,7 +21,7 @@
         "NSLocationWhenInUseUsageDescription": "used to center and recenter the map"
       },
       "supportsTablet": true,
-      "bundleIdentifier": "com.trevorseitz.ellmoeapp",
+      "bundleIdentifier": "com.trevorseitz.ellmoe",
       "publishBundlePath": "ios/ellmoe/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/ellmoe/Supporting/shell-app-manifest.json"
     },
