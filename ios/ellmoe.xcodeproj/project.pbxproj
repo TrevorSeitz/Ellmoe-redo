@@ -161,6 +161,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -408,7 +409,7 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -430,7 +431,7 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_PNG_TEXT = NO;
 				STRIP_SWIFT_SYMBOLS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
