@@ -82,7 +82,7 @@ export default class ProfileScreen extends React.Component {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       // aspect: 1,
-      quality: 0.5,
+      quality: 1,
       exif: true
     });
     this.processImage(result);
@@ -94,7 +94,7 @@ export default class ProfileScreen extends React.Component {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       // aspect: 1,
-      quality: 0.5,
+      quality: 1,
       exif: true
     }).then(await this.processImage(result, metadata));
   };

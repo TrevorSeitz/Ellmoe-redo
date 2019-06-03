@@ -66,34 +66,11 @@ export default class AdditionalImageBrowser extends React.Component {
   getExtraPhotoList = () => {
     // retreive the Location information from the DB
     const { navigation } = this.props;
-    // const id = this.state.key
-    //   .replace(/"/g, "")
-    //   .firestore()
-    //   .collection("locations")
-    //   .doc(id)
-    //   .get()
-    //   .then(doc => {
-    //     if (doc.exists) {
-    //       this.setState({
-    //         location: doc.data(),
-    //         isLoading: false
-    //       });
-    //     } else {
-    //       console.log("No such document!");
-    //     }
-    //   })
-    //   .then(() => {
     this.setState({
       photosLocations: navigation.getParam("photosLocations")
     });
 
     this.setState({ max: 4 - this.state.photosLocations.length });
-    // })
-    // .then(() => {
-    //   // Calculate the number of additional photos that can be chosen
-    //   const currentMax = 4 - this.state.photosLocations.length;
-    //   this.setState({ max: currentMax });
-    // });
   };
 
   selectImage = index => {

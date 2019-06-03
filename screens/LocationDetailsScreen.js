@@ -61,6 +61,12 @@ export default class LocationDetailsScreen extends React.Component {
           console.log("No such document!");
         }
       })
+      .then(() =>
+        console.log(
+          "locationdetailsscreen - this.state.location",
+          this.state.location
+        )
+      )
       .then(() => this._storeData());
   }
 
@@ -129,8 +135,11 @@ export default class LocationDetailsScreen extends React.Component {
 
   getImage = () => {
     if (this.state.location.image.uri) {
-      return this.state.location.image.uri;
-    } else {
+      // i don't think the app has access to the uri at this point
+      //   console.log("uri");
+      //   return this.state.location.image.uri;
+      // } else {
+      console.log("imageFileLocation");
       return this.state.location.imageFileLocation;
     }
   };
@@ -154,7 +163,7 @@ export default class LocationDetailsScreen extends React.Component {
               <Text style={styles.name}>{this.state.location.name}</Text>
             </View>
             <View>
-              <Text h4>{this.state.location.venue}</Text>
+              <Text h4>{this.state.location.project}</Text>
             </View>
             <View>
               <Text h5>{this.state.location.contactName}</Text>

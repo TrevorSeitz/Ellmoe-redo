@@ -53,6 +53,7 @@ export default class ImageBrowser extends React.Component {
   };
 
   processPhotos = r => {
+    console.log("processPhotos");
     if (this.state.after === r.page_info.end_cursor) return;
     let uris = r.edges
       .map(i => i.node)
@@ -80,7 +81,7 @@ export default class ImageBrowser extends React.Component {
     );
     let callbackResult = Promise.all(files).then(imageData => {
       return imageData.map((data, i) => {
-        console.log(data);
+        console.log("imageData: ", data);
         return { file: selectedPhotos[i], ...data };
       });
     });

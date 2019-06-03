@@ -72,7 +72,7 @@ export default class Map extends React.Component {
           const id = doc.id;
           const uid = doc.data().uid;
           const name = doc.data().name;
-          const venue = doc.data().venue;
+          const project = doc.data().project;
           const latitude = doc.data().latitude;
           const longitude = doc.data().longitude;
           const contactName = doc.data().contactName;
@@ -87,7 +87,7 @@ export default class Map extends React.Component {
             id: id,
             uid: uid,
             name: name,
-            venue: venue,
+            project: project,
             latitude: latitude,
             longitude: longitude,
             contactName: contactName,

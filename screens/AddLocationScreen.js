@@ -24,7 +24,7 @@ export default class AddLocationScreen extends React.Component {
     this.state = {
       uid: this._retrieveData(),
       name: "",
-      venue: "",
+      project: "",
       latitude: "",
       longitude: "",
       contactName: "",
@@ -71,7 +71,7 @@ export default class AddLocationScreen extends React.Component {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       aspect: 1,
-      quality: 0.25,
+      quality: 1,
       exif: true
     });
     this.processImage(result);
@@ -83,7 +83,7 @@ export default class AddLocationScreen extends React.Component {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: false,
       aspect: 1,
-      quality: 0.5,
+      quality: 1,
       exif: true
     }).then(await this._getLocationAsync());
     const metadata = result.metadata;
@@ -98,23 +98,33 @@ export default class AddLocationScreen extends React.Component {
 
   processImage = async (result, metadata) => {
     if (!result.cancelled) {
-      this.setState({ image: result });
-      console.log(result);
-      const asset = await MediaLibrary.createAssetAsync(result.uri);
-      let lat = parseFloat(result.exif.GPSLatitude, 5);
-      let long = parseFloat(result.exif.GPSLongitude, 5);
-      if (result.exif.GPSLatitudeRef == "S") {
-        lat *= -1;
-      }
-      if (result.exif.GPSLongitudeRef == "W") {
-        long *= -1;
-      }
+      if (
+        !result.exif.GPSLatitude ||
+        result.exif.GPSLatitude == NaN ||
+        result.exif.GPSLongitude == NaN
+      ) {
+        Alert.alert(
+          "This Image Does Not Have Location Data! Please Chooes Another Image"
+        );
+      } else {
+        this.setState({ image: result });
+        console.log("AddLocationScreen - processImage result: ", result);
+        const asset = await MediaLibrary.createAssetAsync(result.uri);
+        let lat = parseFloat(result.exif.GPSLatitude, 5);
+        let long = parseFloat(result.exif.GPSLongitude, 5);
+        if (result.exif.GPSLatitudeRef == "S") {
+          lat *= -1;
+        }
+        if (result.exif.GPSLongitudeRef == "W") {
+          long *= -1;
+        }
 
-      this.setState({
-        imageFileName: asset.filename,
-        latitude: lat,
-        longitude: long
-      });
+        this.setState({
+          imageFileName: asset.filename,
+          latitude: lat,
+          longitude: long
+        });
+      }
     }
   };
 
@@ -129,7 +139,7 @@ export default class AddLocationScreen extends React.Component {
       .add({
         uid: this.state.uid,
         name: this.state.name,
-        venue: this.state.venue,
+        project: this.state.project,
         latitude: this.state.latitude,
         longitude: this.state.longitude,
         contactName: this.state.contactName,
@@ -145,7 +155,7 @@ export default class AddLocationScreen extends React.Component {
         this.setState({
           uid: "",
           name: "",
-          venue: "",
+          project: "",
           latitude: "",
           longitude: "",
           contactName: "",
@@ -174,18 +184,24 @@ export default class AddLocationScreen extends React.Component {
       isLoading: true //Start activity animation
     });
     let allLocalPhotos = [...this.state.photos];
-    console.log(allLocalPhotos);
+    console.log(
+      "AddLocationScreen - SaveImages - allLocalPhotos before add",
+      allLocalPhotos
+    );
     // add the main photo to the array of extra photos
     allLocalPhotos.push(this.state.image.uri);
-    console.log(allLocalPhotos);
+    console.log(
+      "AddLocationScreen - SaveImages - allLocalPhotos after add",
+      allLocalPhotos
+    );
 
-    // use for loop to send each phot to storage in order
+    // use for loop to send each photo to storage in order
     for (let i = 0; i < allLocalPhotos.length; i++) {
       if (allLocalPhotos[i].file) {
         console.log("in the loop for extra photos: ", i);
         await this.uploadExtraImage(allLocalPhotos[i]);
       } else {
-        console.log("in the loop for MAIN photos: ", i);
+        console.log("Saving MAIN photos: ", i);
         this.uploadMainImage(allLocalPhotos[i]);
       }
     }
@@ -347,9 +363,9 @@ export default class AddLocationScreen extends React.Component {
         </View>
         <View style={styles.subContainer}>
           <TextInput
-            placeholder={"Venue"}
-            value={this.state.venue}
-            onChangeText={text => this.updateTextInput(text, "venue")}
+            placeholder={"Project"}
+            value={this.state.project}
+            onChangeText={text => this.updateTextInput(text, "project")}
           />
         </View>
         <View style={styles.subContainer}>

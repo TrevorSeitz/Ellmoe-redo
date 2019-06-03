@@ -27,10 +27,11 @@ public class AppConstants {
         
         
         
+        
         // ADD EMBEDDED RESPONSES HERE
         // START EMBEDDED RESPONSES
         embeddedResponses.add(new Constants.EmbeddedResponse("https://exp.host/@trevorseitz/snack-HJAp3SLG4", "assets://shell-app-manifest.json", "application/json"));
-        embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40trevorseitz%2Fsnack-HJAp3SLG4%2F1.0.0%2F63aa49abc9c020f01eca9a6c798eeabd-32.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
+        embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40trevorseitz%2Fsnack-HJAp3SLG4%2F1.0.0%2F2bccd71e87beb90a691bd79ccd648f03-32.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
         // END EMBEDDED RESPONSES
     EMBEDDED_RESPONSES = embeddedResponses;
   }

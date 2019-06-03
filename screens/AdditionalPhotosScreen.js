@@ -27,7 +27,7 @@ export default class AdditionalPhotosScreen extends React.Component {
       toDelete: [],
       key: "",
       name: "",
-      venue: "",
+      project: "",
       photosLocations: [],
       cachedPhotosLocations: [],
       after: null,
@@ -67,7 +67,7 @@ export default class AdditionalPhotosScreen extends React.Component {
           this.setState({
             key: doc.id,
             name: location.name,
-            venue: location.venue,
+            project: location.project,
             photosLocations: location.photosLocations,
             isLoading: false
           });
@@ -105,7 +105,7 @@ export default class AdditionalPhotosScreen extends React.Component {
           photos: photos
         });
       })
-      .catch(e => console.log(e));
+      .catch(e => console.log("Error: ", e));
   };
 
   renderImages() {
