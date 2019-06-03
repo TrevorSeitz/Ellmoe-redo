@@ -32,7 +32,7 @@ export default class AdditionalPhotoGallery extends React.Component {
     console.log("left");
     if (this.index > 0) {
       this.index--;
-      console.log(this.index);
+      console.log("AdditionalPhotosGallery - this.index:", this.index);
       this.setState({
         index: this.index
       });

@@ -145,8 +145,7 @@ PODS:
     - EXConstantsInterface
     - EXCore
     - EXTaskManagerInterface
-  - EXTaskManagerInterface (1.0.0):
-    - EXCore
+  - EXTaskManagerInterface (3.0.0)
   - Fabric (1.9.0)
   - FBAudienceNetwork (4.99.0)
   - FBSDKCoreKit (4.39.1):
@@ -465,7 +464,7 @@ SPEC CHECKSUMS:
   EXSensorsInterface: 9e845bc03ad23a846fa6bcd4e2a60f1d0b1a6906
   EXSMS: 2a2f1abfb2f37b686e892261678c70f39c9b7fa8
   EXTaskManager: c4b3dd6936b827b040899a33e9788b42b17d5c25
-  EXTaskManagerInterface: f9869b0f902ba7ccead16e0768c6dd75603163e0
+  EXTaskManagerInterface: edb75b6d0a6d6063b5d040124ebb111b931feede
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FBAudienceNetwork: 80275c0a28574ff5ce820abdc251d05e07e6ae7a
   FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91

@@ -31,7 +31,7 @@ export default class EditAdditionalPhotosScreen extends Component {
       toDelete: [],
       key: "",
       name: "",
-      venue: "",
+      project: "",
       photosLocations: [], //need to get this from navigate.getParam
       cachedPhotos: [],
       after: null,
@@ -64,20 +64,13 @@ export default class EditAdditionalPhotosScreen extends Component {
           const location = doc.data();
           this.setState({
             name: location.name,
-            venue: location.venue,
+            project: location.project,
             photosLocations: navigation.getParam("photosLocations")
           });
         } else {
           console.log("No such document!");
         }
       });
-    // .then(() => {
-    //   const photos = this.state.photosLocations;
-    //   console.log(photos);
-    // for (let location of photos) {
-    //   this.cacheImage(location);
-    // }
-    // });
     this.forceUpdate();
   };
 

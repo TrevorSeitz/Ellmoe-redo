@@ -47,7 +47,7 @@ export default class ListLocationsScreen extends React.Component {
           const id = doc.id;
           const uid = doc.data().uid;
           const name = doc.data().name;
-          const venue = doc.data().venue;
+          const project = doc.data().project;
           const latitude = doc.data().latitude;
           const longitude = doc.data().longitude;
           const contactName = doc.data().contactName;
@@ -60,7 +60,7 @@ export default class ListLocationsScreen extends React.Component {
             id: id,
             uid: uid,
             name: name,
-            venue: venue,
+            project: project,
             latitude: latitude,
             longitude: longitude,
             contactName: contactName,
@@ -90,12 +90,15 @@ export default class ListLocationsScreen extends React.Component {
       );
     }
 
+    // i don't think the app has access to the uri at this point
+    // leftAvatar={{ source: { uri: item.image.uri } }}
+
     return (
       <ScrollView style={styles.container}>
         {this.state.locations.map((item, i) => (
           <ListItem
             key={i}
-            leftAvatar={{ source: { uri: item.image.uri } }}
+            leftAvatar={{ source: { uri: item.imageFileLocation } }}
             title={item.name}
             subtitle={item.description}
             onPress={() => {

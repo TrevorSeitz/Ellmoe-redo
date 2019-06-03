@@ -78,7 +78,7 @@ export default class EditLocationScreen extends React.Component {
         key: id,
         uid: this.state.location.uid,
         name: this.state.location.name,
-        venue: this.state.location.venue,
+        project: this.state.location.project,
         latitude: this.state.location.latitude,
         longitude: this.state.location.longitude,
         contactName: this.state.location.contactName,
@@ -125,9 +125,9 @@ export default class EditLocationScreen extends React.Component {
         </View>
         <View style={styles.subContainer}>
           <TextInput
-            placeholder={"Venue"}
-            value={this.state.location.venue}
-            onChangeText={text => this.updateTextInput(text, "venue")}
+            placeholder={"project"}
+            value={this.state.location.project}
+            onChangeText={text => this.updateTextInput(text, "project")}
           />
         </View>
         <View style={styles.subContainer}>
