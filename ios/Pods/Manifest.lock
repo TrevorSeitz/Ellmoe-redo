@@ -198,6 +198,8 @@ PODS:
   - lottie-ios (2.5.3)
   - React (0.57.1):
     - React/Core (= 0.57.1)
+  - react-native-maps (0.24.2):
+    - React
   - React/ART (0.57.1):
     - React/Core
   - React/Core (0.57.1):
@@ -287,6 +289,7 @@ DEPENDENCIES:
   - EXTaskManagerInterface (from `../node_modules/expo-task-manager-interface/ios`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - react-native-maps (from `../node_modules/react-native-maps`)
   - React/ART (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -410,6 +413,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-maps:
+    :path: "../node_modules/react-native-maps"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -481,8 +486,9 @@ SPEC CHECKSUMS:
   JKBigInteger2: e91672035c42328c48b7dd015b66812ddf40ca9b
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
+  react-native-maps: bb480348a3fe1e5a811fed1ba3387b329161c5cc
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 17593f53c7138a2b08b013853eac7d1470b5d4e4
+PODFILE CHECKSUM: 0122c869e2a166af12113abc375c8d288c7170ed
 
 COCOAPODS: 1.5.3
