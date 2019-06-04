@@ -471,7 +471,7 @@ static NSString *const kFIRParameterTravelClass NS_SWIFT_NAME(AnalyticsParameter
 
 /// A context-specific numeric value which is accumulated automatically for each event type. This is
 /// a general purpose parameter that is useful for accumulating a key metric that pertains to an
-/// event. Examples include reproject, distance, time and points. Value should be specified as signed
+/// event. Examples include revenue, distance, time and points. Value should be specified as signed
 /// 64-bit integer or double as NSNumber. Notes: Values for pre-defined currency-related events
 /// (such as @c kFIREventAddToCart) should be supplied using double as NSNumber and must be
 /// accompanied by a @c kFIRParameterCurrency parameter. The valid range of accumulated values is

@@ -20,7 +20,7 @@ static NSString *const kFIREventAddPaymentInfo NS_SWIFT_NAME(AnalyticsEventAddPa
 /// E-Commerce Add To Cart event. This event signifies that an item was added to a cart for
 /// purchase. Add this event to a funnel with kFIREventEcommercePurchase to gauge the effectiveness
 /// of your checkout process. Note: If you supply the @c kFIRParameterValue parameter, you must
-/// also supply the @c kFIRParameterCurrency parameter so that reproject metrics can be computed
+/// also supply the @c kFIRParameterCurrency parameter so that revenue metrics can be computed
 /// accurately. Params:
 ///
 /// <ul>
@@ -42,7 +42,7 @@ static NSString *const kFIREventAddToCart NS_SWIFT_NAME(AnalyticsEventAddToCart)
 /// E-Commerce Add To Wishlist event. This event signifies that an item was added to a wishlist.
 /// Use this event to identify popular gift items in your app. Note: If you supply the
 /// @c kFIRParameterValue parameter, you must also supply the @c kFIRParameterCurrency
-/// parameter so that reproject metrics can be computed accurately. Params:
+/// parameter so that revenue metrics can be computed accurately. Params:
 ///
 /// <ul>
 ///     <li>@c kFIRParameterQuantity (signed 64-bit integer as NSNumber)</li>
@@ -66,7 +66,7 @@ static NSString *const kFIREventAppOpen NS_SWIFT_NAME(AnalyticsEventAppOpen) = @
 /// E-Commerce Begin Checkout event. This event signifies that a user has begun the process of
 /// checking out. Add this event to a funnel with your kFIREventEcommercePurchase event to gauge the
 /// effectiveness of your checkout process. Note: If you supply the @c kFIRParameterValue
-/// parameter, you must also supply the @c kFIRParameterCurrency parameter so that reproject
+/// parameter, you must also supply the @c kFIRParameterCurrency parameter so that revenue
 /// metrics can be computed accurately. Params:
 ///
 /// <ul>
@@ -127,7 +127,7 @@ static NSString *const kFIREventEarnVirtualCurrency
 /// E-Commerce Purchase event. This event signifies that an item was purchased by a user. Note:
 /// This is different from the in-app purchase event, which is reported automatically for App
 /// Store-based apps. Note: If you supply the @c kFIRParameterValue parameter, you must also
-/// supply the @c kFIRParameterCurrency parameter so that reproject metrics can be computed
+/// supply the @c kFIRParameterCurrency parameter so that revenue metrics can be computed
 /// accurately. Params:
 ///
 /// <ul>
@@ -156,7 +156,7 @@ static NSString *const kFIREventEcommercePurchase NS_SWIFT_NAME(AnalyticsEventEc
 /// Generate Lead event. Log this event when a lead has been generated in the app to understand the
 /// efficacy of your install and re-engagement campaigns. Note: If you supply the
 /// @c kFIRParameterValue parameter, you must also supply the @c kFIRParameterCurrency
-/// parameter so that reproject metrics can be computed accurately. Params:
+/// parameter so that revenue metrics can be computed accurately. Params:
 ///
 /// <ul>
 ///     <li>@c kFIRParameterCurrency (NSString) (optional)</li>
@@ -201,7 +201,7 @@ static NSString *const kFIREventPostScore NS_SWIFT_NAME(AnalyticsEventPostScore)
 /// Present Offer event. This event signifies that the app has presented a purchase offer to a user.
 /// Add this event to a funnel with the kFIREventAddToCart and kFIREventEcommercePurchase to gauge
 /// your conversion process. Note: If you supply the @c kFIRParameterValue parameter, you must
-/// also supply the @c kFIRParameterCurrency parameter so that reproject metrics can be computed
+/// also supply the @c kFIRParameterCurrency parameter so that revenue metrics can be computed
 /// accurately. Params:
 ///
 /// <ul>
@@ -219,7 +219,7 @@ static NSString *const kFIREventPresentOffer NS_SWIFT_NAME(AnalyticsEventPresent
 
 /// E-Commerce Purchase Refund event. This event signifies that an item purchase was refunded.
 /// Note: If you supply the @c kFIRParameterValue parameter, you must also supply the
-/// @c kFIRParameterCurrency parameter so that reproject metrics can be computed accurately.
+/// @c kFIRParameterCurrency parameter so that revenue metrics can be computed accurately.
 /// Params:
 ///
 /// <ul>
@@ -344,7 +344,7 @@ static NSString *const kFIREventUnlockAchievement NS_SWIFT_NAME(AnalyticsEventUn
 /// be a product, a webpage or just a simple image or text. Use the appropriate parameters to
 /// contextualize the event. Use this event to discover the most popular items viewed in your app.
 /// Note: If you supply the @c kFIRParameterValue parameter, you must also supply the
-/// @c kFIRParameterCurrency parameter so that reproject metrics can be computed accurately.
+/// @c kFIRParameterCurrency parameter so that revenue metrics can be computed accurately.
 /// Params:
 ///
 /// <ul>
