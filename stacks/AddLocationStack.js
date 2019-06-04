@@ -1,4 +1,5 @@
 import React from "react";
+import {Button} from 'react-native'
 import { createStackNavigator } from "react-navigation";
 import { Icon } from "expo";
 
@@ -19,6 +20,8 @@ const AddLocationStack = createStackNavigator(
               size={30}
             />
           )
+        // ),
+        // headerRight: <Button onPress={() => navigation.navigate('AddLocationScreen')} title="Clear" />
         };
       }
     }
