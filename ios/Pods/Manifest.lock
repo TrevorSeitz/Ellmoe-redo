@@ -248,8 +248,6 @@ PODS:
   - nanopb/encode (0.3.901)
   - React (0.57.1):
     - React/Core (= 0.57.1)
-  - react-native-maps (0.24.2):
-    - React
   - React/ART (0.57.1):
     - React/Core
   - React/Core (0.57.1):
@@ -340,7 +338,6 @@ DEPENDENCIES:
   - Firebase/Core (~> 5.20.1)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - react-native-maps (from `../node_modules/react-native-maps`)
   - React/ART (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -471,8 +468,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
-  react-native-maps:
-    :path: "../node_modules/react-native-maps"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -551,9 +546,8 @@ SPEC CHECKSUMS:
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  react-native-maps: bb480348a3fe1e5a811fed1ba3387b329161c5cc
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 90534167c1e1a91590b538c13359690205821a54
+PODFILE CHECKSUM: abfbc2f718d42a0fdf02e731dcad0d957996a9d8
 
 COCOAPODS: 1.5.3
