@@ -284,15 +284,13 @@ export default class AddLocationScreen extends React.Component {
   };
 
   renderImage = (item, i) => {
-    // console.log(item);
+    console.log(item);
     return (
-      <View>
-        <Image
-          style={{ height: 75, width: 75 }}
-          source={{ uri: item.file }}
-          key={i}
-        />
-      </View>
+      <Image
+        style={{ height: 75, width: 75 }}
+        source={{ uri: item.file }}
+        key={i}
+      />
     );
   };
 
@@ -303,15 +301,7 @@ export default class AddLocationScreen extends React.Component {
           <Image style={styles.image} source={{ uri: this.state.image.uri }} />
           {this.state.photos.map((item, i) => this.renderImage(item, i))}
         </View>
-        <View style={styles.halfButtonSubContainer}>
-          <Button
-            type="solid"
-            small
-            title="Replace Image"
-            onPress={this.selectPicture}
-          />
-        </View>
-        <View style={styles.halfButtonSubContainer}>
+        <View style={styles.buttonSubContainer}>
           <Button
             type="solid"
             small
@@ -439,12 +429,6 @@ const styles = StyleSheet.create({
     borderBottomColor: "#CCCCCC"
   },
   buttonSubContainer: {
-    flex: 1,
-    marginBottom: 2,
-    padding: 2
-  },
-  halfButtonSubContainer: {
-    // need 2 buttons side by side
     flex: 1,
     marginBottom: 2,
     padding: 2
