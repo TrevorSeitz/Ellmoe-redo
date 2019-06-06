@@ -322,10 +322,10 @@ export default class AddLocationScreen extends React.Component {
         <Text style={styles.buttonText}>Add Main Photo</Text>
         <View style={styles.buttonContainer}>
           <View style={{ flex: 1 }}>
-            <Button2 onPress={this.selectPicture}>Gallery</Button2>
+            <Button3 onPress={this.selectPicture}>Gallery</Button3>
           </View>
           <View style={{ flex: 1 }}>
-            <Button2 onPress={this.takePicture}>Take Picture</Button2>
+            <Button3 onPress={this.takePicture}>Take Picture</Button3>
           </View>
         </View>
       </View>
@@ -406,7 +406,13 @@ export default class AddLocationScreen extends React.Component {
 
 const Button2 = ({ onPress, children }) => (
   <TouchableOpacity style={styles.button} onPress={onPress}>
-    <Text style={styles.buttonText}>{children}</Text>
+    <Text style={styles.button2Text}>{children}</Text>
+  </TouchableOpacity>
+);
+
+const Button3 = ({ onPress, children }) => (
+  <TouchableOpacity style={styles.buttonSideBySide} onPress={onPress}>
+    <Text style={styles.button3Text}>{children}</Text>
   </TouchableOpacity>
 );
 
@@ -447,6 +453,16 @@ const styles = StyleSheet.create({
     color: "#111",
     alignSelf: "center"
   },
+  button2Text: {
+    fontSize: 15,
+    color: "#111",
+    alignSelf: "center"
+  },
+  button3Text: {
+    fontSize: 15,
+    color: "white",
+    alignSelf: "center"
+  },
   button: {
     height: 25,
     backgroundColor: "white",
@@ -456,6 +472,17 @@ const styles = StyleSheet.create({
     marginBottom: 2,
     marginTop: 2,
     alignSelf: "stretch",
+    justifyContent: "center"
+  },
+  buttonSideBySide: {
+    height: 25,
+    backgroundColor: "blue",
+    borderColor: "blue",
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 2,
+    marginTop: 2,
+    // alignSelf: "stretch",
     justifyContent: "center"
   },
   image: {
