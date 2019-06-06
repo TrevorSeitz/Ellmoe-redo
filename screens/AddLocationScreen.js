@@ -301,14 +301,15 @@ export default class AddLocationScreen extends React.Component {
           <Image style={styles.image} source={{ uri: this.state.image.uri }} />
           {this.state.photos.map((item, i) => this.renderImage(item, i))}
         </View>
-        <View style={styles.buttonSubContainer}>
-          <Button
-            type="solid"
-            small
-            title="Add More Photos"
-            onPress={() => this.setState({ imageBrowserOpen: true })}
-          />
+        <View style={styles.buttonContainer}>
+          <View style={{ flex: 1 }}>
+            <Button3 onPress={this.selectPicture}>Change Main Image</Button3>
+          </View>
+          <View style={{ flex: 1 }}>
+            <Button3 onPress={() => this.setState({ imageBrowserOpen: true })}>Add More Photos</Button3>
+          </View>
         </View>
+
         <View style={styles.buttonSubContainer}>
           <Button large title="Save" onPress={() => this.saveImages()} />
         </View>
@@ -417,28 +418,6 @@ const Button3 = ({ onPress, children }) => (
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    flex: 2,
-    padding: 5,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  subContainer: {
-    flex: 1,
-    marginBottom: 5,
-    padding: 2,
-    borderBottomWidth: 1,
-    borderBottomColor: "#CCCCCC"
-  },
-  buttonSubContainer: {
-    flex: 1,
-    marginBottom: 2,
-    padding: 2
-  },
   activity: {
     position: "absolute",
     left: 0,
@@ -447,6 +426,38 @@ const styles = StyleSheet.create({
     bottom: 0,
     alignItems: "center",
     justifyContent: "center"
+  },
+  button: {
+    height: 25,
+    backgroundColor: "white",
+    borderColor: "white",
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 2,
+    marginTop: 2,
+    alignSelf: "stretch",
+    justifyContent: "center"
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    flex: 2,
+    padding: 5,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  buttonSideBySide: {
+    height: 25,
+    backgroundColor: "blue",
+    borderColor: "blue",
+    borderWidth: 2,
+    borderRadius: 5,
+    margin: 2,
+    justifyContent: "center"
+  },
+  buttonSubContainer: {
+    flex: 1,
+    marginBottom: 2,
+    padding: 2
   },
   buttonText: {
     fontSize: 15,
@@ -463,27 +474,8 @@ const styles = StyleSheet.create({
     color: "white",
     alignSelf: "center"
   },
-  button: {
-    height: 25,
-    backgroundColor: "white",
-    borderColor: "white",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 2,
-    marginTop: 2,
-    alignSelf: "stretch",
-    justifyContent: "center"
-  },
-  buttonSideBySide: {
-    height: 25,
-    backgroundColor: "blue",
-    borderColor: "blue",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 2,
-    marginTop: 2,
-    // alignSelf: "stretch",
-    justifyContent: "center"
+  container: {
+    flex: 1
   },
   image: {
     alignItems: "stretch",
@@ -495,5 +487,12 @@ const styles = StyleSheet.create({
     height: 95,
     alignItems: "stretch",
     justifyContent: "center"
+  },
+  subContainer: {
+    flex: 1,
+    marginBottom: 5,
+    padding: 2,
+    borderBottomWidth: 1,
+    borderBottomColor: "#CCCCCC"
   }
 });
