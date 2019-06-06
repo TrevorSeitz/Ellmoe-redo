@@ -29,10 +29,10 @@ export default class AdditionalPhotoGallery extends React.Component {
   };
 
   leftArrow = () => {
-    console.log("left");
+    // console.log("left");
     if (this.index > 0) {
       this.index--;
-      console.log("AdditionalPhotosGallery - this.index:", this.index);
+      // console.log("AdditionalPhotosGallery - this.index:", this.index);
       this.setState({
         index: this.index
       });
