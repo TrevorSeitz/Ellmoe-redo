@@ -216,12 +216,15 @@ export default class ProfileScreen extends React.Component {
             onChangeText={text => this.updateTextInput(text, "email")}
           />
         </View>
-        <View style={styles.container}>
-          <View style={styles.title}>
-            <Text>Add/Change Avatar</Text>
+        <View>
+          <View style={styles.buttonContainer}>
+            <View style={{ flex: 1 }}>
+              <Button3 onPress={this.selectPicture}>Add/Change Avatar</Button3>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Button3 onPress={this.takePicture}>Take Picture</Button3>
+            </View>
           </View>
-          <Button2 onPress={this.selectPicture}>Gallery</Button2>
-          <Button2 onPress={this.takePicture}>Take Picture</Button2>
         </View>
         <View style={styles.container}>
           <Button
@@ -241,25 +244,21 @@ const Button2 = ({ onPress, children }) => (
   </TouchableOpacity>
 );
 
+const Button3 = ({ onPress, children }) => (
+  <TouchableOpacity style={styles.buttonSideBySide} onPress={onPress}>
+    <Text style={styles.button3Text}>{children}</Text>
+  </TouchableOpacity>
+);
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10
-  },
-  subContainer: {
-    flex: 1,
-    marginBottom: 20,
-    padding: 5,
-    borderBottomWidth: 2,
-    borderBottomColor: "#CCCCCC"
-  },
-  title: {
-    flex: 1,
-    marginBottom: 2,
-    padding: 2,
-    justifyContent: "center",
-    alignSelf: "center"
-  },
+avatar: {
+  flex: 1,
+  alignSelf: "center",
+  marginTop: 7.5,
+  padding: 5,
+  width: 225,
+  height: 225
+},
   activity: {
     position: "absolute",
     left: 0,
@@ -282,12 +281,43 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     justifyContent: "center"
   },
-  avatar: {
-    flex: 1,
-    alignSelf: "center",
-    marginTop: 7.5,
+  buttonContainer: {
+    flexDirection: "row",
+    flex: 2,
     padding: 5,
-    width: 225,
-    height: 225
-  }
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  buttonSideBySide: {
+    height: 25,
+    backgroundColor: "blue",
+    borderColor: "blue",
+    borderWidth: 2,
+    borderRadius: 5,
+    margin: 2,
+    justifyContent: "center"
+  },
+  button3Text: {
+    fontSize: 15,
+    color: "white",
+    alignSelf: "center"
+  },
+  container: {
+    flex: 1,
+    padding: 10
+  },
+  subContainer: {
+    flex: 1,
+    marginBottom: 20,
+    padding: 5,
+    borderBottomWidth: 2,
+    borderBottomColor: "#CCCCCC"
+  },
+  title: {
+    flex: 1,
+    marginBottom: 2,
+    padding: 2,
+    justifyContent: "center",
+    alignSelf: "center"
+  },
 });
