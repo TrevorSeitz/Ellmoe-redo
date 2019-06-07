@@ -7,13 +7,14 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@hapi/hoek": "^6.2.1",
     "@hapi/joi": "^15.0.3",
+    "braces": "^3.0.2",
     "core-js": "3.0.0",
     "expo": "^32.0.6",
     "expo-task-manager-interface": "~3.0.0",
     "expokit": "^32.1.2",
     "firebase": "^6.0.2",
-    "@hapi/hoek": "^6.2.1",
     "npm": "^6.9.0",
     "react": "16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
