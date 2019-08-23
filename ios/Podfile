@@ -120,24 +120,27 @@ target 'ellmoe' do
     installer.pods_project.main_group.tab_width = '2';
     installer.pods_project.main_group.indent_width = '2';
 
-    installer.pod_targets.each do |target|
+    installer.target_installation_results[0].each do |installationResultArray|
+        targetName = installationResultArray[0];
+        target = installationResultArray[1]
 
-      if target.pod_name == 'ExpoKit'
-        target.native_target.build_configurations.each do |config|
-          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
-          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'EX_DETACHED=1'
+        if targetName == 'ExpoKit'
+          target.native_target.build_configurations.each do |config|
+            config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+            config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'EX_DETACHED=1'
 
-          # needed for GoogleMaps 2.x
-          config.build_settings['FRAMEWORK_SEARCH_PATHS'] ||= []
-          config.build_settings['FRAMEWORK_SEARCH_PATHS'] << '${PODS_ROOT}/GoogleMaps/Base/Frameworks'
-          config.build_settings['FRAMEWORK_SEARCH_PATHS'] << '${PODS_ROOT}/GoogleMaps/Maps/Frameworks'
+            # needed for GoogleMaps 2.x
+            config.build_settings['FRAMEWORK_SEARCH_PATHS'] ||= []
+            config.build_settings['FRAMEWORK_SEARCH_PATHS'] << '${PODS_ROOT}/GoogleMaps/Base/Frameworks'
+            config.build_settings['FRAMEWORK_SEARCH_PATHS'] << '${PODS_ROOT}/GoogleMaps/Maps/Frameworks'
+          end
         end
-      end
+    end
 
 
-      if ['Amplitude-iOS','Analytics','AppAuth','Branch','CocoaLumberjack','FBSDKCoreKit','FBSDKLoginKit','FBSDKShareKit','GPUImage','JKBigInteger2'].include? target.pod_name
-        target.native_target.build_configurations.each do |config|
-          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.2'
+    if ["amplitude-ios", "analytics", "appauth", "branch", "cocoalumberjack", "fbsdkcorekit", "fbsdkloginkit", "fbsdksharekit", "gpuimage", "jkbiginteger2"].include? target.pod_name
+      target.native_target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.2'
       end
     end
     # Can't specify this in the React podspec because we need
@@ -151,13 +154,12 @@ target 'ellmoe' do
     # Build React Native with RCT_DEV enabled and RCT_ENABLE_INSPECTOR and
     # RCT_ENABLE_PACKAGER_CONNECTION disabled
     next unless target.pod_name == 'React'
-    target.native_target.build_configurations.each do |config|
-      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
-      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_DEV=1'
-      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_ENABLE_INSPECTOR=0'
-      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'ENABLE_PACKAGER_CONNECTION=0'
-    end
-
+      target.native_target.build_configurations.each do |config|
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_DEV=1'
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'RCT_ENABLE_INSPECTOR=0'
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'ENABLE_PACKAGER_CONNECTION=0'
+      end
     end
   end
-end
+# end
