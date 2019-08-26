@@ -11,13 +11,17 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import { Constants, Location, Permissions, MapView, Marker, Icon } from "expo";
+import Constants from "expo-constants";
+import * as Location from "expo-location";
+import * as Permissions from "expo-permissions";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { Ionicons } from "@expo/vector-icons";
 
 export default class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uid: this._retrieveData(),
+      uid: "",
       user: null,
       location: null,
       locations: [],
@@ -38,6 +42,13 @@ export default class Map extends React.Component {
           "Oops, this will not work on Sketch in an Android emulator. Try it on your device!"
       });
     }
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        this.setState({
+          uid: user.uid
+        });
+      }
+    });
   }
 
   componentDidMount() {
@@ -153,6 +164,7 @@ export default class Map extends React.Component {
     return (
       <View style={styles.container}>
         <MapView
+          provider={PROVIDER_GOOGLE}
           showsUserLocation={true}
           showsMyLocationButton={false}
           showsCompass={true}
@@ -171,7 +183,7 @@ export default class Map extends React.Component {
             const latitude = Number(location.latitude);
             const longitude = Number(location.longitude);
             return (
-              <MapView.Marker
+              <Marker
                 key={i}
                 title={location.name}
                 description={location.description + "**Click to View**"}
@@ -183,14 +195,14 @@ export default class Map extends React.Component {
                     <View style={styles.marker} />
                   </View>
                 </View>
-              </MapView.Marker>
+              </Marker>
             );
           })}
           <TouchableOpacity
             style={styles.touchableArea}
             onPress={this.getCurrentPosition}
           >
-            <Icon.Ionicons name="md-locate" style={styles.button} />
+            <Ionicons name="md-locate" style={styles.button} />
           </TouchableOpacity>
         </MapView>
       </View>

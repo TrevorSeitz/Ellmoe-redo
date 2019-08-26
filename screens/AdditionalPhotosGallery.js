@@ -6,7 +6,8 @@ import {
   Image,
   TouchableOpacity
 } from "react-native";
-import { Icon, ScreenOrientation } from "expo";
+import { ScreenOrientation } from "expo";
+import { Ionicons } from '@expo/vector-icons'
 import * as firebase from "firebase";
 
 export default class AdditionalPhotoGallery extends React.Component {
@@ -66,13 +67,13 @@ export default class AdditionalPhotoGallery extends React.Component {
           style={styles.touchableAreaLeft}
           onPress={this.leftArrow}
         >
-          <Icon.Ionicons name="ios-arrow-dropleft" style={styles.leftButton} />
+          <Ionicons name="ios-arrow-dropleft" style={styles.leftButton} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.touchableAreaRight}
           onPress={this.rightArrow}
         >
-          <Icon.Ionicons
+          <Ionicons
             name="ios-arrow-dropright"
             style={styles.rightButton}
           />

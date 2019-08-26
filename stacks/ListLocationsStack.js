@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
-import { Icon } from "expo";
+import { Ionicons } from '@expo/vector-icons'
 
 import ListLocationsScreen from "../screens/ListLocationsScreen";
 import LocationDetailsScreen from "../screens/LocationDetailsScreen";
@@ -16,7 +16,7 @@ const ListLocationsStack = createStackNavigator(
         return {
           headerTitle: "List Locations",
           headerLeft: (
-            <Icon.Ionicons
+            <Ionicons
               style={{ paddingLeft: 10 }}
               onPress={() => navigation.openDrawer()}
               name="md-menu"

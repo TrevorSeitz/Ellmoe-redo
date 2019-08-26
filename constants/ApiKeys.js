@@ -6,12 +6,12 @@ const settings = {};
 // export default {
 // var firebaseConfig = {
 const firebaseConfig = {
-  apiKey: "AIzaSyAdb-VyzqskSDW_vxh984z7elcmNkPOYts",
+  apiKey: "AIzaSyA7-2UPNZnt8A2Wc7GYUjWzun7EJjLD9WU",
   src: "https://www.gstatic.com/firebasejs/5.9.1/firebase.js",
-  authDomain: "ellmoe.firebaseapp.com",
-  databaseURL: "https://ellmoe.firebaseio.com",
-  projectId: "ellmoe",
-  storageBucket: "ellmoe.appspot.com",
+  authDomain: "ellmoe-stage.firebaseapp.com",
+  databaseURL: "https://ellmoe-stage.firebaseio.com",
+  projectId: "ellmoe-stage",
+  storageBucket: "ellmoe-stage.appspot.com",
   messagingSenderId: "774360750184"
 };
 

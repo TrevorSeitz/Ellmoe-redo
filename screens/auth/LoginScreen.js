@@ -33,7 +33,7 @@ export default class LoginScreen extends React.Component {
       .signInWithEmailAndPassword(email, password)
       .then(user => this._storeData(user))
       .then(() => {
-        if (this._ismounted) this.props.navigation.navigate("Map");
+        this.props.navigation.navigate("Map");
       })
       .catch(error => this.setState({ errorMessage: error.message }));
   };

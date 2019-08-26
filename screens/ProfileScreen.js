@@ -14,7 +14,10 @@ import { TextInput } from "react-native-paper";
 import { Button } from "react-native-elements";
 import * as firebase from "firebase";
 import firestore from "firebase/firestore";
-import { Font, ImagePicker, Permissions, Location, MediaLibrary } from "expo";
+import { Font, ImagePicker, MediaLibrary } from "expo";
+
+import * as Permissions from 'expo-permissions';
+import * as Location from 'expo-location';
 
 export default class ProfileScreen extends React.Component {
   static navigationOptions = {

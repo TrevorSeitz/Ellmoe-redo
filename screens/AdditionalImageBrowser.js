@@ -13,7 +13,8 @@ import {
 } from "react-native";
 import { Button } from "react-native-elements";
 
-import { Location } from "expo";
+
+import * as Location from 'expo-location';
 import ImageTile from "./ImageTile";
 import * as firebase from "firebase";
 
